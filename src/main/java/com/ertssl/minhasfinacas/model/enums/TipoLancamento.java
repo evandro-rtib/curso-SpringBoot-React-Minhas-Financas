@@ -1,4 +1,4 @@
-package com.ertssl.minhasfinacas.model.entity;
+package com.ertssl.minhasfinacas.model.enums;
 
 public enum TipoLancamento {
 
