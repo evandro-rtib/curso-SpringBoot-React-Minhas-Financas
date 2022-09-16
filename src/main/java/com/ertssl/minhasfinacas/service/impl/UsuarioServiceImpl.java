@@ -3,6 +3,7 @@ package com.ertssl.minhasfinacas.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ertssl.minhasfinacas.exception.RegraNegocioException;
 import com.ertssl.minhasfinacas.model.entity.Usuario;
 import com.ertssl.minhasfinacas.model.repository.UsuarioRepository;
 import com.ertssl.minhasfinacas.service.UsuarioService;
@@ -33,8 +34,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public void validarEmail(String email) {
-		// TODO Auto-generated method stub
-		
+		boolean existe	= repository.existsByEmail(email);
+		if(existe) {
+			throw new RegraNegocioException("Já existe esse um usuário cadastrado com esse e-mail ");
+		}
 	}
 
 }
